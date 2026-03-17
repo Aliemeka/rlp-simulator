@@ -51,7 +51,7 @@ Once both are connected, type transactions in the server terminal:
 > quit
 ```
 
-Format: `tx <to_address_hex> <value>`
+Format: `data <to_address_hex> <value>`
 
 **Send Transaction data**
 
