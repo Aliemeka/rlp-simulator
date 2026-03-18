@@ -48,10 +48,11 @@ Once both are connected, type transactions in the server terminal:
 > data
 > data hello
 > data hello world
+> data blah blah blah blah blah blah blah blah blah blah blah blah blah
 > quit
 ```
 
-Format: `data <to_address_hex> <value>`
+Format: `data <value>`
 
 **Send Transaction data**
 
