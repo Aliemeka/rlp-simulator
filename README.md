@@ -40,7 +40,7 @@ cargo run --bin client
 
 ## Usage
 
-Once both are connected, type transactions in the server terminal:
+Once both are connected, type commands in the server terminal:
 
 **Send string data**
 
@@ -54,7 +54,7 @@ Once both are connected, type transactions in the server terminal:
 
 Format: `data <value>`
 
-**Send Transaction data**
+**Send Transaction data** _(Simulates transaction objects on EVM chains)_
 
 ```
 > tx deadbeef 1000000
