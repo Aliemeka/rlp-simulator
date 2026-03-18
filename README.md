@@ -1,6 +1,6 @@
 # RLP over TCP
 
-Two-port RLP serialization simulation using Tokio.
+Two-port Recursive-length prefix (RLP) serialization simulation using Tokio. RLP logic is written from scratch.
 
 ## Architecture
 
@@ -67,8 +67,23 @@ Format: `tx <to_address_hex> <value>`
 
 The server encodes each transaction as RLP, sends it over TCP to the client's port. The client decodes it, prints the raw bytes and decoded fields, then sends an ack back to the server's port.
 
+## Project Structure
+
+```
+src/
+├── lib.rs              # Transaction type, encode_string / decode_string helpers
+├── rlp/
+│   ├── mod.rs          # Rlp, RlpStream, Encodable, Decodable, DecoderError
+│   ├── encode.rs       # Encoding helpers + Encodable impls for primitives
+│   └── decode.rs       # Decoding helpers + Decodable impls for primitives
+└── bin/
+    ├── server.rs       # TCP server — reads stdin, encodes and sends RLP
+    └── client.rs       # TCP client — receives RLP, decodes and prints
+```
+
 ## Dependencies
 
 - `tokio` — async runtime and TCP
-- `rlp` — RLP encoding/decoding (same crate the Ethereum ecosystem uses)
 - `hex` — hex string parsing for addresses
+
+RLP encoding/decoding is implemented from scratch in `src/rlp/`.

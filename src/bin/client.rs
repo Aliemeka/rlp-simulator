@@ -1,4 +1,4 @@
-use rlp::{Decodable, Rlp};
+use rlp_simulator::rlp::{Decodable, Rlp};
 use rlp_simulator::{Transaction, decode_string};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::{TcpListener, TcpStream};

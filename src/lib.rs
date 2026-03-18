@@ -1,3 +1,4 @@
+pub mod rlp;
 use rlp::{Decodable, Encodable, Rlp, RlpStream};
 
 // Simulates an ethereum transaction object

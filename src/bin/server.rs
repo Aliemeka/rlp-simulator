@@ -1,4 +1,4 @@
-use rlp::RlpStream;
+use rlp_simulator::rlp::RlpStream;
 use rlp_simulator::{Transaction, encode_string};
 use tokio::io::{AsyncBufReadExt, AsyncReadExt, AsyncWriteExt, BufReader};
 use tokio::net::{TcpListener, TcpStream};
