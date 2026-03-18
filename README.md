@@ -16,7 +16,7 @@ Server (port 9999)                    Client (port 9998)
 - **Port 9999:** Server listens, receives acks from client
 - **Port 9998:** Client listens, receives RLP-encoded transactions from server
 
-Two independent TCP connections. Data flows server → client on one, acks flow client → server on the other.
+Two independent TCP connections. Data flows server → client on one, acknowledgement signal (acks) flow client → server on the other.
 
 ## Run
 
