@@ -1,5 +1,15 @@
 use super::{Encodable, RlpStream};
 
+impl Encodable for bool {
+    fn rlp_append(&self, s: &mut RlpStream) {
+        if *self {
+            s.append_raw(&[0x01]);
+        } else {
+            s.append_raw(&[0x80]);
+        }
+    }
+}
+
 impl Encodable for u64 {
     fn rlp_append(&self, s: &mut RlpStream) {
         if *self == 0 {

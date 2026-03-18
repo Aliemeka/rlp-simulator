@@ -1,5 +1,16 @@
 use super::{Decodable, DecoderError, Rlp};
 
+impl Decodable for bool {
+    fn decode(rlp: &Rlp) -> Result<Self, DecoderError> {
+        let bytes = rlp.data()?;
+        match bytes {
+            [] => Ok(false),
+            [0x01] => Ok(true),
+            _ => Err(DecoderError::InvalidPrefix(bytes[0])),
+        }
+    }
+}
+
 impl Decodable for u64 {
     fn decode(rlp: &Rlp) -> Result<Self, DecoderError> {
         let bytes = rlp.data()?;
