@@ -40,9 +40,8 @@ async fn main() {
     eprintln!("Enter data as: data <value>");
     eprintln!("Example: data hello world\n");
     eprintln!("Enter transactions as: tx <to_hex> <value>");
-    eprintln!("Example: deadbeef 1000000");
-    eprintln!("Type 'quit' to exit");
-    eprintln!();
+    eprintln!("Example: tx deadbeef 1000000");
+    eprintln!("Type 'quit' to exit\n");
 
     loop {
         eprint!("> ");
@@ -77,7 +76,7 @@ async fn main() {
             eprintln!("[server] ack received: {}", String::from_utf8_lossy(&buf));
             continue;
         } else if command != Some("tx") {
-            eprintln!("Unknown command. Use 'data' or 'tx'.");
+            eprintln!("Unknown command. Use 'data' or 'tx' or 'quit'.");
             continue;
         }
 

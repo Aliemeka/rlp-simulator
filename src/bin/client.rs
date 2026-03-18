@@ -53,8 +53,9 @@ async fn main() {
 
         match Transaction::decode(&rlp) {
             Ok(tx) => {
+                eprintln!("[client] received raw transaction rlp stream: {rlp}");
                 eprintln!(
-                    "[client] received: nonce={} to=0x{} value={} ({} bytes RLP)",
+                    "[client] decoded transaction data: nonce={} to=0x{} value={} ({} bytes RLP)",
                     tx.nonce,
                     hex::encode(&tx.to),
                     tx.value,
@@ -69,14 +70,19 @@ async fn main() {
                 eprintln!();
             }
             Err(_) => {
-                eprintln!("Something happened!");
-                // Not a transaction, try to decode as string
                 if let Ok(s) = decode_string(&rlp) {
+                    eprintln!("[client] received raw data rlp stream: {rlp}");
                     eprintln!(
-                        "[client] received raw data: '{}' ({} bytes RLP)",
+                        "[client] decoded data: '{}' ({} bytes RLP)",
                         s,
                         payload.len()
                     );
+                    // Print the raw RLP bytes
+                    eprint!("[client] raw bytes: ");
+                    for byte in &payload {
+                        eprint!("{:02x} ", byte);
+                    }
+                    eprintln!();
                 } else {
                     eprintln!(
                         "[client] received unknown data ({} bytes RLP)",
